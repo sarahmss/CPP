@@ -2,8 +2,10 @@
 
 The goal of these modules is to introduce you to Object-Oriented Programming. This will be the starting point of your C++ journey. Many languages are recommended to learn OOP. We decided to choose C++ since it’s derived from your old friend C
 
+
+# C00
 <details>
-  <summary>00 namespaces</summary>
+  <summary>00.Namespaces</summary>
 
 
 Defines a scope where every variable or function placed there can be assigned the same as an existing one without conflicting.
@@ -34,7 +36,7 @@ int main(void)
 </details>
 
 <details>
-  <summary>01 stdio streams</summary>  
+  <summary>01.Stdio streams</summary>  
 
       std namespace gives to us access to std input and std output through use of: 
 
@@ -57,7 +59,7 @@ int main(void)
 </details>
 
 <details>
-  <summary>02 class and instance</summary>  
+  <summary>02.Class and instance</summary>  
 
 <details>
   <summary> in .hpp file we declare our class</summary>  
@@ -95,11 +97,12 @@ int main(void)
     }
 ```
 </details>
+</details>
 
 
 
 <details>
-  <summary>03 Membber attributes and Member functions</summary>  
+  <summary>03.Member attributes and Member functions</summary>  
 in cpp we have the possibilitie to declare a function directly in our class.
 
 <details>
@@ -109,12 +112,14 @@ in cpp we have the possibilitie to declare a function directly in our class.
           #ifndef SAMPLE_CLASS_H
           # define SAMPLE_CLASS_H
 
-          class Sample // identifier of a class
+          class Sample 
           {
+             private:
+                 int foo; // attribute member
              public:
-                 Sample(void); // Construction function
-                 ~Sample(void); //  Destruction function
-                 void    bar(void);
+                 Sample(void); 
+                 ~Sample(void); 
+                 void    bar(void); // function member
           };
 ```
 </details>
@@ -134,9 +139,80 @@ in cpp we have the possibilitie to declare a function directly in our class.
     }
 ```
 </details>
+</details>
+  
+<details>
+     <summary> 04.this </summary> 
+  
+  this is a self keywolrd which corresponds to a pointer in the current instance.
+  
+     <details>
+  <summary>.cpp </summary>  
+  
+```cpp
+    #include <iostrem>
+    #include "Sample.class.hpp"
 
+    ... 
+
+    void Sample::bar(void)
+    {
+       std::cout << "Constructor called" << "std::endl";
+       this->foo = 42;
+       std::cout << "this->foo:" << this->foo << std::endl;
+    }
+```
+</details>
 
 </details>
 
 
+  <details>
+  <summary>05.initialization list</summary>  
+    To classes with multiple attributes we can initiliaze all of then usin this keyworld and assinging a value to it.
+    but is quite simple to use a initialization list which follows the syntax in .cpp file.
+   <details>
+  <summary> .hpp</summary>  
+  
+```cpp
+          #ifndef SAMPLE_CLASS_H
+          # define SAMPLE_CLASS_H
+
+          class Sample 
+          {
+             public:
+                 char a1;
+                 int  a2;
+                 float a3;
+     
+                 Sample(char p1, int p2, float p3); 
+                 ~Sample(void); 
+                 void    bar(void); // function member
+          };
+```
+</details>
+  
+ <details>
+  <summary>.cpp</summary> 
+   
+```cpp
+    #include <iostrem>
+    #include "Sample.class.hpp"
+
+    ...
+    void Sample::Sample(char p1, int p2, float p3) : a1(p1), a2(p2), a3(p3) // Initialization list syntax
+    {
+          std::cout << "Constructor called" << "std::endl";
+          std::cout << "this->a1:" << this->a1 << std::endl;
+          std::cout << "this->a2:" << this->a2 << std::endl;
+          std::cout << "this->a3:" << this->a3 << std::endl;
+       
+    }
+```
+</details>
+   
+ </details>
+      
+      
+ # C01
 
