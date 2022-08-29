@@ -96,6 +96,46 @@ int main(void)
 ```
 </details>
 
+
+
+<details>
+  <summary>03 Membber attributes and Member functions</summary>  
+in cpp we have the possibilitie to declare a function directly in our class.
+
+<details>
+  <summary> .hpp</summary>  
+  
+```cpp
+          #ifndef SAMPLE_CLASS_H
+          # define SAMPLE_CLASS_H
+
+          class Sample // identifier of a class
+          {
+             public:
+                 Sample(void); // Construction function
+                 ~Sample(void); //  Destruction function
+                 void    bar(void);
+          };
+```
+</details>
+
+<details>
+  <summary>.cpp </summary>  
+  
+```cpp
+    #include <iostrem>
+    #include "Sample.class.hpp"
+
+    ... 
+
+    void Sample::bar(void)
+    {
+       std::cout << "Member function called bar" << "endl";
+    }
+```
+</details>
+
+
 </details>
 
 
