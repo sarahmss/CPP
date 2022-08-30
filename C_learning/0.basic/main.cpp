@@ -1,15 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 19:40:50 by coder             #+#    #+#             */
-/*   Updated: 2022/08/24 02:59:21 by smodesto         ###   ########.fr       */
+/*   Created: 2022/08/23 04:01:01 by coder             #+#    #+#             */
+/*   Updated: 2022/08/23 04:54:03 by smodesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "PhoneBook.hpp"
+#include "./main.hpp"
 
+int main()
+{
+	Employee	emp1 = Employee("Carlo", "Fx", 32);
+	Employee	emp2 = Employee("Marco", "WB", 58);
 
+	emp1.IntroduceYourself();
+	emp2.IntroduceYourself();
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 19:40:50 by coder             #+#    #+#             */
-/*   Updated: 2022/08/03 01:59:54 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/24 03:00:16 by smodesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
     - std::cout             // Prevents ambiguity thanks to the use of object's
                                 full name
-    - using std::cout       // uses a directive for ach name in std
+    - using std::cout       // uses a directive for each name in std
     - using namespace std   // release access to every name in std namespace
                                  (conflit)
 */
@@ -23,13 +23,13 @@ void    upper_word(char *word)
 {
     char    buffer[100];
     int     i;
-    
+
     for (i = 0; word[i] != '\0'; i++)
     {
         buffer[i]  = toupper(word[i]);
     }
     buffer[i] = '\0';
-    std::cout << buffer << " "; 
+    std::cout << buffer << " ";
 }
 
 int main(int argc, char **argv)
@@ -42,6 +42,6 @@ int main(int argc, char **argv)
         {
             upper_word(argv[i]);
         }
-        std::cout << std::endl;                        
+        std::cout << std::endl;
     }
 }
