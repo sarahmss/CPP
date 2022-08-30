@@ -212,6 +212,53 @@ in cpp we have the possibilitie to declare a function directly in our class.
 </details>
    
  </details>
+ 
+  <details>
+  <summary>06.Const </summary> 
+  </details>
+  
+  <details>
+  <summary>07.Visibility </summary> 
+  </details>
+  
+  <details>
+  <summary>08.Class vs Struct </summary> 
+  The principle of structs was extendend in cpp. this way structs and class works exactly the same way in cpp. The difference is that the scope of a class is private by default.
+  
+   <details>
+  <summary> struct.hpp</summary>  
+  
+```cpp
+          #ifndef SAMPLE_CLASS_H
+          # define SAMPLE_CLASS_H
+
+          struct Sample 
+          {
+                 int foo;
+                 Sample(void); 
+                 ~Sample(void); 
+                 void    bar(void) constr; 
+          };
+```
+</details>
+  
+ <details>
+  <summary>class.hpp</summary> 
+   
+```cpp
+          #ifndef SAMPLE_CLASS_H
+          # define SAMPLE_CLASS_H
+
+          class Sample 
+          {
+                 int foo;
+                 Sample(void); 
+                 ~Sample(void); 
+                 void    bar(void) constr; 
+          };
+```
+</details>
+ </details>
       
       
  # C01
