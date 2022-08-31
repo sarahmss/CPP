@@ -6,36 +6,39 @@
 /*   By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 02:55:40 by coder             #+#    #+#             */
-/*   Updated: 2022/08/24 03:33:29 by smodesto         ###   ########.fr       */
+/*   Updated: 2022/08/31 04:02:10 by smodesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Contact.hpp"
 
+//---------------------------Constructor---------------------------------------
 Contact::Contact(void)
 {
+	std::cout << "building contact" << std:endl;
 	return ;
 }
-
+//---------------------------Destructor---------------------------------------
 Contact::~Contact(void)
 {
+	std::cout << "Destroyng contact" << std:endl;
 	return ;
 }
 
 //---------------------------Getters---------------------------------------
-std::string	GetFirstName(void) const
+std::string	Contact::GetFirstName(void) const
 {
 	return (this->FirstName);
 }
-std::string	GetLastName(void) const
+std::string	Contact::GetLastName(void) const
 {
 	return (this->LastName);
 }
-std::string	GetNickName(void) const
+std::string	Contact::GetNickName(void) const
 {
 	return (this->NickName);
 }
-std::string	GetDarkestSecret(void) const
+std::string	Contact::GetDarkestSecret(void) const
 {
 	return (this->DarkestSecrete);
 }
@@ -45,33 +48,43 @@ int			GetPhoneNumber(void) const
 }
 
 //---------------------------Setters---------------------------------------
-void		SetFirstName(std::string firstname)
+void		Contact::SetFirstName(std::string firstname)
 {
-		std::cout << "First Name";
+		std::cout << FIRSTNAME
 		std::getline(std::cin, firstname);
 		this->FirstName = firstname;
 }
-void		SetLastName(std::string lastname)
+void		Contact::SetLastName(std::string lastname)
 {
-		std::cout << FIRSTNAME;
-	std::getline(std::cin, buffer);
-	this->_firstName = buffer;
+	std::cout << LASTNAME;
+	std::getline(std::cin, lastname);
+	this->LastName = lastname;
 }
-void		SetNickName(std::string nickname)
+void		Contact::SetNickName(std::string nickname)
 {
-		std::cout << FIRSTNAME;
-	std::getline(std::cin, buffer);
-	this->_firstName = buffer;
+	std::cout << NICKNAME;
+	std::getline(std::cin, nickname);
+	this->NickName = nickname;
 }
-void		SetDarkestSecret(std::string darkestsecret)
+void		Contact::SetDarkestSecret(std::string darkestsecret)
 {
-		std::cout << FIRSTNAME;
-	std::getline(std::cin, buffer);
-	this->_firstName = buffer;
+	std::cout << DARKESTSECRET;
+	std::getline(std::cin, darkestsecret);
+	this->DarkestSecret = darkestsecret;
 }
-void		SetPhoneNumber(int phonenumber)
+void		Contact::SetPhoneNumber(std::string phonenumber)
 {
-		std::cout << FIRSTNAME;
-	std::getline(std::cin, buffer);
-	this->_firstName = buffer;
+	std::cout << PHONENUMBER;
+	std::getline(std::cin, phonenumber);
+	this->PhoneNumber = PhoneNumber;
+}
+
+//---------------------------Utils---------------------------------------
+void	Contact::PrintContact(void)
+{
+	std::cout << FIRSTNAME << this->GetFirstName() << std::endl;
+	std::cout << LASTNAME << this->GetLastName() << std::endl;
+	std::cout << NICKNAME << this->GetNickName() << std::endl;
+	std::cout << PHONENUMBER << this->GetPhoneNumber() << std::endl;
+	std::cout << DARKESTSECRET << this->GetDarkestSecret() << std::endl;
 }

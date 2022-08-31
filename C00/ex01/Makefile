@@ -3,43 +3,52 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
+#    By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/02 00:14:28 by coder             #+#    #+#              #
-#    Updated: 2022/08/02 00:14:30 by coder            ###   ########.fr        #
+#    Created: 2021/08/11 17:02:33 by smodesto          #+#    #+#              #
+#    Updated: 2022/08/31 03:44:10 by smodesto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME	= PhoneBook
 
-DIR_OBJS = objects
+SRC_PATH		= ./
+INCLUDES_PATH	= ./
+OBJS_PATH		= ./
 
-OBJS = magaphone.o
+SRCS_FILES =	main.cpp	\
+				Contact.cpp
 
-SRC = megaphone.cpp
 
-CC	= clang++
+SRCS = $(addprefix $(SRC_PATH), $(SRCS_FILES))
 
-RM	= rm -rf
+OBJS_FILES	= $(patsubst %.c, %.o, $(SRCS_FILES))
+OBJS = $(addprefix $(OBJS_PATH), $(OBJS_FILES))
 
-CFLAGS	= -Wall -Wextra -Werror -g  -std=c++98
+HEADER_FILES	=	includes.hpp	\
+					Contact.hpp
 
-$(NAME): $(OBJS)
-		@-$(CC) $(CFLAGS) $(OBJS) $(HEADER) -o $(NAME)
+HEADERS = $(addprefix $(INCLUDES_PATH), $(HEADER_FILES))
 
-$(OBJS): $(SRC)
-		@$(CC) $(CFLAGS) -c $< -o $@
-		@echo "Compiled "$<" successfully!"
+CC			= c++
+FLAGS		= -Wall -Wextra -Werror -g -std=c++98
+INCLUDES	= -I$(INCLUDES_PATH)
 
-all: $(NAME)
+all:		$(NAME)
+
+$(NAME):	$(OBJS)
+			$(CC) $(OBJS) $(FLAGS) $(INCLUDES)  -o $(NAME)
+
+$(OBJS_PATH)%.o : $(SRC_PATH)%.c $(HEADERS)
+			mkdir -p objects
+			$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
 
 clean:
-		$(RM) $(OBJS)
+			@rm -f $(OBJS)
+			echo cleaned!
 
-fclean:	clean
-		$(RM) $(NAME)
-		$(RM) $(OBJS)
+fclean:		clean
+			@rm -f $(NAME)
+re: fclean all
 
-re:		fclean all
-
-PHONY:	all clean fclean re
+.PHONY: all clean fclean re
