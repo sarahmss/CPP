@@ -6,7 +6,7 @@
 /*   By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 04:50:06 by smodesto          #+#    #+#             */
-/*   Updated: 2022/08/24 02:58:54 by smodesto         ###   ########.fr       */
+/*   Updated: 2022/09/01 01:12:25 by smodesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,30 +24,17 @@ using	std::endl;
 class PhoneBook
 {
 	public:
-		Contact	ContactsList[8];
-		Contact	NewContact()
-		{
-			string	FirstName;
-			string	LastName;
-			string	NickName;
-			string	DarkestSecret;
-			int		PhoneNumber;
+		PhoneBook(void);
+		~PhoneBook(void);
 
-			cout << "To add a new contact into the PhoneBook insert:" ;
-			cout << "\nContact first name: ";
-			cin >> FirstName;
-			cout << "\nContact last name: ";
-			cin >> LastName;
-			cout << "\nContact nickname: ";
-			cin >> NickName;
-			cout << "\nContact darkest secret: ";
-			cin >> DarkestSecret;
-			cout << "\nContact phone number: ";
-			cin >> PhoneNumber;
-			Contact	NewContact = Contact(FirstName, LastName, NickName,
-				DarkestSecret, PhoneNumber);
-			return (NewContact);
-		}
+		bool	add(void);
+		bool	search(void);
+		bool	exit(void);
+
+	private:
+		Contact	ContactsList[8];
+		int	PhoneBook::get_pos(void);
+
 };
 
 #endif

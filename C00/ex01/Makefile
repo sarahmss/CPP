@@ -6,7 +6,7 @@
 #    By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/11 17:02:33 by smodesto          #+#    #+#              #
-#    Updated: 2022/08/31 04:10:10 by smodesto         ###   ########.fr        #
+#    Updated: 2022/09/01 01:23:03 by smodesto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,19 +14,16 @@ NAME	= PhoneBook
 
 SRC_PATH		= ./
 INCLUDES_PATH	= ./
-OBJS_PATH		= ./
 
-SRCS_FILES =	main.cpp	\
-				Contact.cpp
-
+SRCS_FILES =	main.cpp		\
+				Contact.cpp		\
+				PhoneBook.cpp
 
 SRCS = $(addprefix $(SRC_PATH), $(SRCS_FILES))
 
-OBJS_FILES	= $(patsubst %.c, %.o, $(SRCS_FILES))
-OBJS = $(addprefix $(OBJS_PATH), $(OBJS_FILES))
-
 HEADER_FILES	=	includes.hpp	\
-					Contact.hpp
+					Contact.hpp		\
+					PhoneBook.hpp
 
 HEADERS = $(addprefix $(INCLUDES_PATH), $(HEADER_FILES))
 
@@ -36,18 +33,13 @@ INCLUDES	= -I$(INCLUDES_PATH)
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS)
-			$(CC) $(OBJS) $(FLAGS) $(INCLUDES)  -o $(NAME)
-
-$(OBJS_PATH)%.o : $(SRC_PATH)%.c $(HEADERS)
-			mkdir -p objects
-			$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+$(NAME):
+			$(CC) $(SRCS) $(FLAGS) $(INCLUDES) -o $(NAME)
 
 clean:
-			rm -f $(OBJS)
-			echo cleaned!
+			@echo cleaned!
 
-fclean:		clean
+fclean:
 			@rm -f $(NAME)
 re: fclean all
 

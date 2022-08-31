@@ -6,7 +6,7 @@
 /*   By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 04:42:12 by smodesto          #+#    #+#             */
-/*   Updated: 2022/08/30 20:17:05 by smodesto         ###   ########.fr       */
+/*   Updated: 2022/09/01 01:14:59 by smodesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ class Contact
 		void		SetPhoneNumber(std::string phonenumber);
 
 		void		PrintContact(void);
+		bool		isBlank(void);
 };
 
 #endif

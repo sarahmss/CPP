@@ -6,7 +6,7 @@
 /*   By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 20:08:56 by smodesto          #+#    #+#             */
-/*   Updated: 2022/08/30 20:20:23 by smodesto         ###   ########.fr       */
+/*   Updated: 2022/09/01 01:23:03 by smodesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <iostream>
 #include "Contact.hpp"
+#include "PhoneBook.hpp"
+
 
 #define	FIRSTNAME		"FirstName: "
 #define	LASTNAME		"LastName: "

@@ -6,7 +6,7 @@
 /*   By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 02:55:40 by coder             #+#    #+#             */
-/*   Updated: 2022/08/31 04:09:23 by smodesto         ###   ########.fr       */
+/*   Updated: 2022/09/01 01:16:47 by smodesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Contact::Contact(void)
 //---------------------------Destructor---------------------------------------
 Contact::~Contact(void)
 {
-	std::cout << "Destroyng contact" << std::endl;
+	std::cout << "Destroiyng contact" << std::endl;
 	return ;
 }
 
@@ -87,4 +87,19 @@ void	Contact::PrintContact(void)
 	std::cout << NICKNAME << this->GetNickName() << std::endl;
 	std::cout << DARKESTSECRET << this->GetDarkestSecret() << std::endl;
 	std::cout << PHONENUMBER << this->GetPhoneNumber() << std::endl;
+}
+
+bool	Contact::isBlank(void)
+{
+	if (this->GetFirstName() != "")
+		return (false);
+	if (this->GetLastName() != "")
+		return (false);
+	if (this->GetNickName() != "")
+		return (false);
+	if (this->GetDarkestSecret() != "")
+		return (false);
+	if (this->GetPhoneNumber() != "")
+		return (false);
+	return (true);
 }
