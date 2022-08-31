@@ -259,7 +259,62 @@ in cpp we have the possibilitie to declare a function directly in our class.
 ```
 </details>
  </details>
+
+ <details>
+ <summary>09.Accessors</summary> 
+   in our calss often we have pprivate atttributes, however we want to know the value of this attributes without changing its value.
+   Because getter will access on read only mod we must define it as const function;
+  <details>
+  <summary>class.hpp</summary> 
+   
+```cpp
+          #ifndef SAMPLE_CLASS_H
+          # define SAMPLE_CLASS_H
+
+          class Sample 
+          {
+              private:
+                 int foo;
       
+              public:
+                 Sample(void); 
+                 ~Sample(void);
+                void  SetFoo(int value);
+                int   GetFoo(void);
+                  
+      };
+```
+ </details>
+   
+<details>
+  <summary> class.cpp </summary> 
+   
+```cpp
+  Sample::GetFoo(void) const
+  {
+      return (this->foo);
+  }
       
+  Sample::SetFoo(int value)
+  {
+      this->foo = value;
+  }
+```
+ </details>
+ </details>
+    
+ <details>
+ <summary>10.Comparisons</summary> 
+ </details>
+   
+  <details>
+ <summary>11.Non member attributes and non member functions </summary> 
+ </details>
+    
+ <details>
+ <summary>12.Pointers to members </summary> 
+ </details>
+    
+    
  # C01
 
