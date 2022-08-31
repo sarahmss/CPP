@@ -6,7 +6,7 @@
 #    By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/11 17:02:33 by smodesto          #+#    #+#              #
-#    Updated: 2022/08/31 03:44:10 by smodesto         ###   ########.fr        #
+#    Updated: 2022/08/31 04:10:10 by smodesto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ $(OBJS_PATH)%.o : $(SRC_PATH)%.c $(HEADERS)
 			$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
 
 clean:
-			@rm -f $(OBJS)
+			rm -f $(OBJS)
 			echo cleaned!
 
 fclean:		clean

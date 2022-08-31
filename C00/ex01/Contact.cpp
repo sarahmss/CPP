@@ -6,7 +6,7 @@
 /*   By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 02:55:40 by coder             #+#    #+#             */
-/*   Updated: 2022/08/31 04:02:10 by smodesto         ###   ########.fr       */
+/*   Updated: 2022/08/31 04:09:23 by smodesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 //---------------------------Constructor---------------------------------------
 Contact::Contact(void)
 {
-	std::cout << "building contact" << std:endl;
+	std::cout << "Building contact" << std::endl;
 	return ;
 }
 //---------------------------Destructor---------------------------------------
 Contact::~Contact(void)
 {
-	std::cout << "Destroyng contact" << std:endl;
+	std::cout << "Destroyng contact" << std::endl;
 	return ;
 }
 
@@ -40,9 +40,9 @@ std::string	Contact::GetNickName(void) const
 }
 std::string	Contact::GetDarkestSecret(void) const
 {
-	return (this->DarkestSecrete);
+	return (this->DarkestSecret);
 }
-int			GetPhoneNumber(void) const
+std::string	Contact::GetPhoneNumber(void) const
 {
 	return (this->PhoneNumber);
 }
@@ -50,9 +50,9 @@ int			GetPhoneNumber(void) const
 //---------------------------Setters---------------------------------------
 void		Contact::SetFirstName(std::string firstname)
 {
-		std::cout << FIRSTNAME
-		std::getline(std::cin, firstname);
-		this->FirstName = firstname;
+	std::cout << FIRSTNAME;
+	std::getline(std::cin, firstname);
+	this->FirstName = firstname;
 }
 void		Contact::SetLastName(std::string lastname)
 {
@@ -76,7 +76,7 @@ void		Contact::SetPhoneNumber(std::string phonenumber)
 {
 	std::cout << PHONENUMBER;
 	std::getline(std::cin, phonenumber);
-	this->PhoneNumber = PhoneNumber;
+	this->PhoneNumber = phonenumber;
 }
 
 //---------------------------Utils---------------------------------------
@@ -85,6 +85,6 @@ void	Contact::PrintContact(void)
 	std::cout << FIRSTNAME << this->GetFirstName() << std::endl;
 	std::cout << LASTNAME << this->GetLastName() << std::endl;
 	std::cout << NICKNAME << this->GetNickName() << std::endl;
-	std::cout << PHONENUMBER << this->GetPhoneNumber() << std::endl;
 	std::cout << DARKESTSECRET << this->GetDarkestSecret() << std::endl;
+	std::cout << PHONENUMBER << this->GetPhoneNumber() << std::endl;
 }
