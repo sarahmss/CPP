@@ -6,7 +6,7 @@
 /*   By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 04:50:06 by smodesto          #+#    #+#             */
-/*   Updated: 2022/09/01 01:12:25 by smodesto         ###   ########.fr       */
+/*   Updated: 2022/09/01 02:20:37 by smodesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,7 @@
 #define PHONEBOOK_HPP
 
 #include <iostream>
-#include "Contact.hpp"
-
-using	std::string;
-using	std::cout;
-using	std::cin;
-using	std::endl;
+#include "./Contact.hpp"
 
 class PhoneBook
 {
@@ -27,14 +22,16 @@ class PhoneBook
 		PhoneBook(void);
 		~PhoneBook(void);
 
-		bool	add(void);
-		bool	search(void);
-		bool	exit(void);
+		bool	Add(void);
+		bool	Search(void);
+		bool	Exit(void);
+		void	InitPrompt(void);
 
 	private:
 		Contact	ContactsList[8];
-		int	PhoneBook::get_pos(void);
-
+		int		CurrentPos;
+		int		GetPos(void);
+		int		LastPos(void);
 };
 
 #endif

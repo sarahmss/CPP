@@ -6,14 +6,16 @@
 /*   By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 04:42:12 by smodesto          #+#    #+#             */
-/*   Updated: 2022/09/01 01:14:59 by smodesto         ###   ########.fr       */
+/*   Updated: 2022/09/01 02:24:08 by smodesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
 
-#include "includes.hpp"
+#include <iostream>
+#include "./defines.hpp"
+
 
 /*
 	In contact class we will be using privates member attributes and public

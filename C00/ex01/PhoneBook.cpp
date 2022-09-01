@@ -6,7 +6,7 @@
 /*   By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 19:40:50 by coder             #+#    #+#             */
-/*   Updated: 2022/09/01 01:17:33 by smodesto         ###   ########.fr       */
+/*   Updated: 2022/09/01 02:26:37 by smodesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,51 +15,62 @@
 //---------------------------Constructor---------------------------------------
 PhoneBook::PhoneBook(void)
 {
-	std::cout << "Building PhoneBook" << std::endl;
 	return ;
 }
 
 //---------------------------Destructor---------------------------------------
 PhoneBook::~PhoneBook(void)
 {
-	std::cout << "Destroiyng PhoneBook" << std::endl;
 	return ;
 }
 
 
 //---------------------------Utils---------------------------------------
-int	PhoneBook::get_pos(void)
+int	PhoneBook::LastPos(void)
+{
+	CurrentPos++;
+	if (CurrentPos == 8)
+		CurrentPos = 0;
+	return (CurrentPos);
+}
+
+int	PhoneBook::GetPos(void)
 {
 	for (int i = 0; i < 8; i++)
 	{
 		if (this->ContactsList[i].isBlank())
 			return (i);
 	}
-	return ;
+	return (LastPos());
 }
 
+void	PhoneBook::InitPrompt(void)
+{
+	std::cout << "Welcome coder" << std::endl;
+	return ;
+}
 //---------------------------Commands---------------------------------------
 
-bool	PhoneBook::add(void)
+bool	PhoneBook::Add(void)
 {
 	Contact		NewContact;
-	std:string	buffer;
+	std::string	buffer;
 
 	NewContact.SetFirstName(buffer);
 	NewContact.SetLastName(buffer);
 	NewContact.SetNickName(buffer);
 	NewContact.SetDarkestSecret(buffer);
 	NewContact.SetPhoneNumber(buffer);
-	this->ContactsList[get_pos()] = NewContact;
-	return ;
+	this->ContactsList[GetPos()] = NewContact;
+	return (true);
 }
 
-bool	PhoneBook::search(void)
+bool	PhoneBook::Search(void)
 {
-	return ;
+	return (true);
 }
 
-bool	PhoneBook::exit(void)
+bool	PhoneBook::Exit(void)
 {
-	return ;
+	return (true);
 }

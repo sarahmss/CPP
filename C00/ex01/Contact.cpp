@@ -6,7 +6,7 @@
 /*   By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 02:55:40 by coder             #+#    #+#             */
-/*   Updated: 2022/09/01 01:16:47 by smodesto         ###   ########.fr       */
+/*   Updated: 2022/09/01 02:25:41 by smodesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 //---------------------------Constructor---------------------------------------
 Contact::Contact(void)
 {
-	std::cout << "Building contact" << std::endl;
 	return ;
 }
 //---------------------------Destructor---------------------------------------
 Contact::~Contact(void)
 {
-	std::cout << "Destroiyng contact" << std::endl;
 	return ;
 }
 
