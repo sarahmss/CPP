@@ -6,7 +6,7 @@
 /*   By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 04:42:12 by smodesto          #+#    #+#             */
-/*   Updated: 2022/09/01 02:24:08 by smodesto         ###   ########.fr       */
+/*   Updated: 2022/09/02 03:39:49 by smodesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 #include <iostream>
 #include "./defines.hpp"
-
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 /*
 	In contact class we will be using privates member attributes and public

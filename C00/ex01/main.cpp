@@ -6,7 +6,7 @@
 /*   By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 03:48:31 by smodesto          #+#    #+#             */
-/*   Updated: 2022/09/01 02:27:15 by smodesto         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:50:14 by smodesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ static void	InitPhoneBook(void)
 	PhoneBook	pb;
 	std::string	buffer;
 
+	pb.InitPrompt();
 	while (true)
 	{
-		pb.InitPrompt();
+		std::cout << "* ";
 		std::getline(std::cin, buffer);
 		if (ValidCommand(buffer, &pb) == false)
 			std::cout << INPUT_ERROR << std::endl;
