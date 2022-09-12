@@ -4,6 +4,6 @@ The goal of these modules is to introduce you to Object-Oriented Programming. Th
 
 All info about the project can be found in wiki pages:
 * [Home](https://github.com/sarahmss/CPP/wiki)
-* [Module 00](https://github.com/sarahmss/CPP/wiki/C00)
-* [Module 01]()
+* [Module 00](https://github.com/sarahmss/CPP/wiki/Module-00)
+* [Module 01](https://github.com/sarahmss/CPP/wiki/Module-01)
 
