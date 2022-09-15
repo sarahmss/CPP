@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 20:35:40 by coder             #+#    #+#             */
-/*   Updated: 2022/09/15 01:58:06 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/15 02:10:05 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,21 @@
 std::string	ft_str_replace(std::string orig, std::string rep, std::string with)
 {
 	std::string	replaced;
+	std::string	buffer;
 	int			length;
 
 	length = rep.length();
-	replaced = orig;
-	for (size_t i = 0; i != std::string::npos; i = orig.find(rep, i + 1))
+	buffer = orig;
+	for (size_t i = 0; i != std::string::npos; i = buffer.find(rep))
 	{
 		if (i != std::string::npos && i != 0)
 		{
-			replaced.erase(i, length);
-			replaced.insert(i, with);
+			replaced.append(buffer.substr(0, i));
+			replaced.append(with);
+			buffer.erase(0, i + rep.length());
 		}
 	}
+	replaced.append(buffer);
 	return (replaced);
 }
 
