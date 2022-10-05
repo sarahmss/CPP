@@ -7,4 +7,4 @@ All info about the project can be found in wiki pages:
 * [Module 00](https://github.com/sarahmss/CPP/wiki/Module-00)
 * [Module 01](https://github.com/sarahmss/CPP/wiki/Module-01)
 * [Module 02](https://github.com/sarahmss/CPP/wiki/Module-02)
-
+* [Module 03](https://github.com/sarahmss/CPP/wiki/Module-03)
