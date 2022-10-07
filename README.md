@@ -8,3 +8,8 @@ All info about the project can be found in wiki pages:
 * [Module 01](https://github.com/sarahmss/CPP/wiki/Module-01)
 * [Module 02](https://github.com/sarahmss/CPP/wiki/Module-02)
 * [Module 03](https://github.com/sarahmss/CPP/wiki/Module-03)
+
+
+***
+### Ex00  - Module03
+![image](https://user-images.githubusercontent.com/62228465/194450544-332ff53b-2e18-4516-932e-0abce924ff2b.png)
