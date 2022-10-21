@@ -9,6 +9,7 @@ All info about the project can be found in wiki pages:
 * [Module 02](https://github.com/sarahmss/CPP/wiki/Module-02)
 * [Module 03](https://github.com/sarahmss/CPP/wiki/Module-03)
 * [Module 04](https://github.com/sarahmss/CPP/wiki/Module-04)
+* [Module 05](https://github.com/sarahmss/CPP/wiki/Module-05)
 
 ***
 ### Ex00  - Module03
