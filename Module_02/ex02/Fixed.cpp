@@ -4,40 +4,24 @@
 ** ------------------------------- CONSTRUCTORS --------------------------------
 */
 
-Fixed::Fixed()
+Fixed::Fixed()						// Default
 {
-	this->value = 0;
-	std::cout << "Default constructor called" << std::endl;
+	this->_value = 0;
 }
 
-/*
-	@brief: Copy constructor is used to initialize the members of a newly
-			created object by copying the members of an already existing object.
-	@old_obj: a reference to an object of the same class as an argument.
-*/
-Fixed::Fixed( const Fixed & old_obj )
+Fixed::Fixed( const Fixed & rhs )	// Copy
 {
-	std::cout << "Copy constructor called" << std::endl;
-	*this = old_obj;
+	*this = rhs;
 }
 
-/*
-	@brief: converts int_num to the corresponding fixed-point value
-*/
-Fixed::Fixed(const int int_num)
+Fixed::Fixed(const int int_num)		// Parametric
 {
-	std::cout << "Int constructor called" << std::endl;
-	this->value = int_num << this->bits;
+	this->_value = int_num << this->_bits;
 }
 
-/*
-	@brief: converts float_num to the corresponding fixed-point value
-*/
-Fixed::Fixed(const float float_num)
+Fixed::Fixed(const float float_num)	// Parametric
 {
-	std::cout << "Float constructor called" << std::endl;
-
-	this->value = roundf(float_num * (1 << this->bits));
+	this->_value = roundf(float_num * (1 << this->_bits));
 }
 
 /*
@@ -46,7 +30,7 @@ Fixed::Fixed(const float float_num)
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
+	return ;
 }
 
 
@@ -60,124 +44,144 @@ std::ostream &			operator<<( std::ostream & o, Fixed const & obj )
 	return o;
 }
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ RELATIONAL ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 
-bool	operator>( Fixed const & obj) const
+bool	Fixed::operator>( Fixed const & rhs) const
 {
-
-}
-bool	operator<( Fixed const & obj) const
-{
-
-}
-bool	operator>=( Fixed const & obj) const
-{
-
-}
-bool	operator<=( Fixed const & obj) const
-{
-
-}
-bool	operator==( Fixed const & obj) const
-{
-
-}
-bool	operator!=( Fixed const & obj) const
-{
-
+	return (this->getRawBits() > rhs.getRawBits());
 }
 
-/*
-	assignment operator replaces the contents of existing objects.
-*/
-Fixed &				Fixed::operator=( Fixed const & obj )
+bool	Fixed::operator<( Fixed const & rhs) const
 {
-	std::cout << "Copy assignment operator called" << std::endl;
-	if ( this != &obj )
+	return (this->getRawBits() < rhs.getRawBits());
+}
+
+bool	Fixed::operator>=( Fixed const & rhs) const
+{
+	return (this->getRawBits() >= rhs.getRawBits());
+}
+
+bool	Fixed::operator<=( Fixed const & rhs) const
+{
+	return (this->getRawBits() <= rhs.getRawBits());
+}
+
+bool	Fixed::operator==( Fixed const & rhs) const
+{
+	return (this->getRawBits() == rhs.getRawBits());
+}
+
+bool	Fixed::operator!=( Fixed const & rhs) const
+{
+	return (this->getRawBits() != rhs.getRawBits());
+}
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ASSIGNMENT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+Fixed &				Fixed::operator=( Fixed const & rhs )	// Assignment (replaces content of rhs)
+{
+	if ( this != &rhs )
 	{
-		this->value = obj.getRawBits();
+		this->_value = rhs.getRawBits();
 	}
 	return (*this);
 }
 
-Fixed	operator+( Fixed const & obj ) const
-{
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ARITHMETIC ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 
-}
-Fixed	operator-( Fixed const & obj ) const
+Fixed	Fixed::operator+( Fixed const & rhs ) const
 {
+	Fixed	plus;
 
-}
-Fixed	operator*( Fixed const & obj ) const
-{
-
-}
-Fixed	operator/( Fixed const & obj ) const
-{
-
+	plus.setRawBits(this->getRawBits() +  rhs.getRawBits());
+	return (plus);
 }
 
-Fixed &	operator++( void )
+Fixed	Fixed::operator-( Fixed const & rhs ) const
 {
+	Fixed	minus;
 
+	minus.setRawBits(this->getRawBits() -  rhs.getRawBits());
+	return (minus);
 }
 
-Fixed &	operator--( void )
+Fixed	Fixed::operator*( Fixed const & rhs ) const
 {
+	Fixed	mult;
 
+	mult.setRawBits((this->getRawBits() *  rhs.getRawBits()) >> this->_bits);
+	return (mult);
 }
 
-Fixed	operator++( int )
+Fixed	Fixed::operator/( Fixed const & rhs ) const
 {
-
+	Fixed	div((this->toFloat() /  rhs.toFloat()));
+	return (div);
 }
 
-Fixed	operator--( int )
+Fixed &	Fixed::operator++( void )	// pre-increment
 {
-
+	this->_value++;
+	return (*this);
 }
 
-
-
-static Fixed &			max( Fixed& a, Fixed& b)
+Fixed &	Fixed::operator--( void )	// pre-decrement
 {
-
+	this->_value--;
+	return (*this);
 }
 
-static Fixed &			min( Fixed& a, Fixed& b)
+Fixed	Fixed::operator++( int )	// post-increment
 {
+	Fixed	temp(*this);	// save the current value
 
+	this->_value++;
+	return (temp);			// return the saved state
 }
 
-static Fixed const &	max( Fixed const & a, Fixed const & b)
+Fixed	Fixed::operator--( int )	// post-decrement
 {
+	Fixed	temp(*this);	// save the current value
 
+	this->_value--;
+	return (temp);			// return the saved state
 }
-
-static Fixed const &	min( Fixed const & a, Fixed const & b)
-{
-
-}
-
 
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
 /*
-	@brief: Converts the fixed-point value to a floating-point value
+	@brief: Converts the fixed-point _value to a floating-point _value
 */
 float		Fixed::toFloat( void ) const
 {
-	return ((float)this->value / (1 << this->bits));
+	return ((float)this->_value / (1 << this->_bits));
 }
 
-
 /*
-	@brief: converts the fixed-point value to an integer value.
+	@brief: converts the fixed-point _value to an integer _value.
 */
 int			Fixed::toInt( void ) const
 {
-	return (this->value >> this->bits);
+	return (this->_value >> this->_bits);
+}
+
+Fixed &	Fixed::max( Fixed& n1, Fixed& n2) {
+	return (n1.getRawBits() > n2.getRawBits() ? n1 : n2);
+}
+
+Fixed &	Fixed::min( Fixed& n1, Fixed& n2) {
+	return (n1.getRawBits() < n2.getRawBits() ? n1 : n2);
+}
+
+Fixed const &	Fixed::max( Fixed const & n1, Fixed const & n2) {
+	return (n1.getRawBits() > n2.getRawBits() ? n1 : n2);
+}
+
+Fixed const &	Fixed::min( Fixed const & n1, Fixed const & n2) {
+	return (n1.getRawBits() < n2.getRawBits() ? n1 : n2);
 }
 
 /*
@@ -185,12 +189,11 @@ int			Fixed::toInt( void ) const
 */
 int			Fixed::getRawBits( void ) const
 {
-//	std::cout << "getRawBits member function called" << std::endl;
-	return (this->value);
+	return (this->_value);
 }
 
 void		Fixed::setRawBits( int const raw )
 {
-	this->value = raw;
+	this->_value = raw;
 }
 /* ************************************************************************** */

@@ -6,15 +6,10 @@
 
 Fixed::Fixed()
 {
-	this->value = 0;
+	this->_value = 0;
 	std::cout << "Default constructor called" << std::endl;
 }
 
-/*
-	@brief: Copy constructor is used to initialize the members of a newly
-			created object by copying the members of an already existing object.
-	@old_obj: a reference to an object of the same class as an argument.
-*/
 Fixed::Fixed( const Fixed & old_obj )
 {
 	std::cout << "Copy constructor called" << std::endl;
@@ -22,22 +17,26 @@ Fixed::Fixed( const Fixed & old_obj )
 }
 
 /*
-	@brief: converts int_num to the corresponding fixed-point value
+	@brief: converts int_num to the corresponding fixed-point _value
+		as long as a fixed-point number is represented like IIIIIII.FFFFFFF
+		we shift left the int number
+			ex: 5	==	0000000000000101
+			5 << 8	==	0000010100000000
 */
 Fixed::Fixed(const int int_num)
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->value = int_num << this->bits;
+	this->_value = int_num << this->_bits;
 }
 
 /*
-	@brief: converts float_num to the corresponding fixed-point value
+	@brief: converts float_num to the corresponding fixed-point _value
+		ex: 1	==	0000000000000001 => 1 << 8 == 00000000100000000
 */
 Fixed::Fixed(const float float_num)
 {
 	std::cout << "Float constructor called" << std::endl;
-
-	this->value = roundf(float_num * (1 << this->bits));
+	this->_value = roundf(float_num * (1 << this->_bits));
 }
 
 /*
@@ -62,7 +61,7 @@ Fixed &				Fixed::operator=( Fixed const & obj )
 	std::cout << "Copy assignment operator called" << std::endl;
 	if ( this != &obj )
 	{
-		this->value = obj.getRawBits();
+		this->_value = obj.getRawBits();
 	}
 	return (*this);
 }
@@ -79,20 +78,20 @@ std::ostream &			operator<<( std::ostream & o, Fixed const & obj )
 */
 
 /*
-	@brief: Converts the fixed-point value to a floating-point value
+	@brief: Converts the fixed-point _value to a floating-point _value
 */
 float		Fixed::toFloat( void ) const
 {
-	return ((float)this->value / (1 << this->bits));
+	return ((float)this->_value / (1 << this->_bits));
 }
 
 
 /*
-	@brief: converts the fixed-point value to an integer value.
+	@brief: converts the fixed-point _value to an integer _value.
 */
 int			Fixed::toInt( void ) const
 {
-	return (this->value >> this->bits);
+	return (this->_value >> this->_bits);
 }
 
 /*
@@ -101,11 +100,11 @@ int			Fixed::toInt( void ) const
 int			Fixed::getRawBits( void ) const
 {
 //	std::cout << "getRawBits member function called" << std::endl;
-	return (this->value);
+	return (this->_value);
 }
 
 void		Fixed::setRawBits( int const raw )
 {
-	this->value = raw;
+	this->_value = raw;
 }
 /* ************************************************************************** */

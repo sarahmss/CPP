@@ -7,48 +7,47 @@
 
 class Fixed
 {
+	private:
+		int					_value;
+		static const int	_bits = 8;
+
 	public:
 
 		Fixed();
 		Fixed(const int int_num);
 		Fixed(const float float_num);
-		Fixed( Fixed const & old_obj );
+		Fixed( Fixed const & rhs );
 		~Fixed();
 
-		bool	operator>( Fixed const & obj) const ;
-		bool	operator<( Fixed const & obj) const ;
-		bool	operator>=( Fixed const & obj) const ;
-		bool	operator<=( Fixed const & obj) const ;
-		bool	operator==( Fixed const & obj) const ;
-		bool	operator!=( Fixed const & obj) const ;
+		bool	operator>( Fixed const & rhs) const ;
+		bool	operator<( Fixed const & rhs) const ;
+		bool	operator>=( Fixed const & rhs) const ;
+		bool	operator<=( Fixed const & rhs) const ;
+		bool	operator==( Fixed const & rhs) const ;
+		bool	operator!=( Fixed const & rhs) const ;
 
-		Fixed &	operator=( Fixed const & obj );
-		Fixed	operator+( Fixed const & obj ) const ;
-		Fixed	operator-( Fixed const & obj ) const ;
-		Fixed	operator*( Fixed const & obj ) const ;
-		Fixed	operator/( Fixed const & obj ) const ;
+		Fixed &	operator=( Fixed const & rhs );
+		Fixed	operator+( Fixed const & rhs ) const ;
+		Fixed	operator-( Fixed const & rhs ) const ;
+		Fixed	operator*( Fixed const & rhs ) const ;
+		Fixed	operator/( Fixed const & rhs ) const ;
 
 		Fixed &	operator++( void );
 		Fixed &	operator--( void );
 		Fixed	operator++( int );
 		Fixed	operator--( int );
 
-		static Fixed &			max( Fixed& a, Fixed& b);
-		static Fixed &			min( Fixed& a, Fixed& b);
-		static Fixed const &	max( Fixed const & a, Fixed const & b);
-		static Fixed const &	min( Fixed const & a, Fixed const & b);
+		static Fixed &			max( Fixed& n1, Fixed& n2);
+		static Fixed &			min( Fixed& n1, Fixed& n2);
+		static Fixed const &	max( Fixed const & n1, Fixed const & n2);
+		static Fixed const &	min( Fixed const & n1, Fixed const & n2);
 
 		int			getRawBits( void ) const;
 		void		setRawBits( int const raw );
 		float		toFloat( void ) const;
 		int			toInt( void ) const;
-
-	private:
-		int					value;
-		static const int	bits = 8;
-
 };
 
-std::ostream &	operator<<( std::ostream & o, Fixed const & obj );
+std::ostream &	operator<<( std::ostream & o, Fixed const & rhs );
 
 #endif /* *********************************************************** FIXED_H */
