@@ -6,6 +6,8 @@
 
 Convert::Convert(std::string literal)
 {
+	this->f_cast = 0;
+	this->d_cast = 0;
 	_SetType(literal);
 	this->_str = literal.c_str();
 	for(int i = 0; i < 4; i++)
@@ -98,7 +100,8 @@ void	Convert::CastingTypes( )
 		}
 		case  (FLOAT):
 		{
-			this->f_cast = atof(this->_str);
+			if (this->f_cast == 0)
+				this->f_cast = atof(this->_str);
 			this->c_cast = static_cast<char>(this->f_cast);
 			this->i_cast = static_cast<int>(this->f_cast);
 			this->d_cast = static_cast<double>(this->f_cast);
@@ -106,7 +109,8 @@ void	Convert::CastingTypes( )
 		}
 		case  (DOUBLE):
 		{
-			this->d_cast = strtod(this->_str, NULL);
+			if (this->d_cast == 0)
+				this->d_cast = strtod(this->_str, NULL);
 			this->c_cast = static_cast<char>(this->d_cast);
 			this->f_cast = static_cast<float>(this->d_cast);
 			this->i_cast = static_cast<int>(this->d_cast);
@@ -124,18 +128,21 @@ void	Convert::CastingTypes( )
 
 void	Convert::_CheckOverflow( void )
 {
-	if (this->c_cast < 0 || this->c_cast > 127)
-		this->_valid[CHAR] = false;
+	long double check = strtod(this->_str, NULL);
+	if ((this->_type == INT && (check < INT_MIN || check > INT_MAX)))
+		throw Convert::Overflow();
 	if (this->i_cast < INT_MIN || this->i_cast > INT_MAX)
 		this->_valid[INT] = false;
 	if (this->f_cast < -FLT_MAX || this->f_cast > FLT_MAX)
 		this->_valid[FLOAT] = false;
 	if (this->d_cast < -DBL_MAX || this->d_cast > DBL_MAX)
 		this->_valid[DOUBLE] = false;
+	if (this->c_cast < 0 || this->c_cast > 127)
+		this->_valid[CHAR] = false;
 }
 
 bool	Convert::_isInt(std::string literal) const
-{
+{	
 	for (int i = (literal[0] == '-' ? 1 : 0); literal[i] != '\0' ; i++)
 	{
 		if (isdigit(literal[i]) == 0)
@@ -144,11 +151,15 @@ bool	Convert::_isInt(std::string literal) const
 	return (true);
 }
 
-bool	Convert::_isFloat(std::string literal) const
+bool	Convert::_isFloat(std::string literal)
 {
 	bool	dot = false; 
 	int		i;
 
+	if (literal == F_MAX_STR)
+		this->f_cast = FLT_MAX;
+	else if (literal == F_MIN_STR)
+		this->f_cast = -FLT_MAX;
 	for (i = (literal[0] == '-' ? 1 : 0); literal[i] != '\0'; i++)
 	{
 		if ((!isdigit(literal[i]) && literal[i] != '.' && literal[i] != 'f')
@@ -163,10 +174,14 @@ bool	Convert::_isFloat(std::string literal) const
 	return false;
 }
 
-bool	Convert::_isDouble(std::string literal) const
+bool	Convert::_isDouble(std::string literal)
 {
 	bool	dot = false; 
 
+	if (literal == D_MAX_STR)
+		this->d_cast = DBL_MAX;
+	else if (literal == D_MIN_STR)
+		this->d_cast = -DBL_MAX;
 	for (int i = (literal[0] == '-' ? 1 : 0); literal[i] != '\0'; i++)
 	{
 		if ((!isdigit(literal[i]) && literal[i] != '.') 
@@ -185,6 +200,9 @@ bool	Convert::_isChar(std::string literal) const
 
 char const*	Convert::invalidType::what() const throw() {
 	return (" Invalid scalar type ");
+}
+char const*	Convert::Overflow::what() const throw() {
+	return (" Overflow type ");
 }
 
 
