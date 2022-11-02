@@ -11,7 +11,13 @@ All info about the project can be found in wiki pages:
 * [Module 04](https://github.com/sarahmss/CPP/wiki/Module-04)
 * [Module 05](https://github.com/sarahmss/CPP/wiki/Module-05)
 * [Module 06](https://github.com/sarahmss/CPP/wiki/Module-06)
+* [Module 07](https://github.com/sarahmss/CPP/wiki/Module-07)
+* [Module 08](https://github.com/sarahmss/CPP/wiki/Module-08)
 
 ***
 ### Ex00  - Module03
 ![image](https://user-images.githubusercontent.com/62228465/194450544-332ff53b-2e18-4516-932e-0abce924ff2b.png)
+
+### Ex02 - Module06
+![image](https://user-images.githubusercontent.com/62228465/199587552-06f3e871-4afc-43a2-a655-7810c354abc9.png)
+
