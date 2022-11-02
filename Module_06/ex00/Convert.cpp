@@ -136,7 +136,7 @@ void	Convert::_CheckOverflow( void )
 
 bool	Convert::_isInt(std::string literal) const
 {
-	for (int i = (literal[0] == '-' ? 0 : 1); literal[i] != '\0' ; i++)
+	for (int i = (literal[0] == '-' ? 1 : 0); literal[i] != '\0' ; i++)
 	{
 		if (isdigit(literal[i]) == 0)
 			return false;
@@ -149,7 +149,7 @@ bool	Convert::_isFloat(std::string literal) const
 	bool	dot = false; 
 	int		i;
 
-	for (i = (literal[0] == '-' ? 0 : 1); literal[i] != '\0'; i++)
+	for (i = (literal[0] == '-' ? 1 : 0); literal[i] != '\0'; i++)
 	{
 		if ((!isdigit(literal[i]) && literal[i] != '.' && literal[i] != 'f')
 			|| (literal[i] == '.' && dot == true)
@@ -167,7 +167,7 @@ bool	Convert::_isDouble(std::string literal) const
 {
 	bool	dot = false; 
 
-	for (int i = (literal[0] == '-' ? 0 : 1); literal[i] != '\0'; i++)
+	for (int i = (literal[0] == '-' ? 1 : 0); literal[i] != '\0'; i++)
 	{
 		if ((!isdigit(literal[i]) && literal[i] != '.') 
 			|| (literal[i] == '.' && dot == true))
