@@ -129,7 +129,11 @@ void	Convert::CastingTypes( )
 void	Convert::_CheckOverflow( void )
 {
 	long double check = strtod(this->_str, NULL);
-	if ((this->_type == INT && (check < INT_MIN || check > INT_MAX)))
+	if ((this->_type == INT && (check < INT_MIN || check > INT_MAX)) 
+		|| ((this->_type == FLOAT || this->_type == DOUBLE)
+		&& check == 0 && this->_str[0] != 0 
+		&& this->f_cast != -FLT_MAX  && this->f_cast != FLT_MAX 
+		&& this->d_cast != -DBL_MAX  && this->d_cast != DBL_MAX))
 		throw Convert::Overflow();
 	if (this->i_cast < INT_MIN || this->i_cast > INT_MAX)
 		this->_valid[INT] = false;
