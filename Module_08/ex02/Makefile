@@ -6,11 +6,11 @@
 #    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/11 17:02:33 by smodesto          #+#    #+#              #
-#    Updated: 2022/11/04 16:59:11 by coder            ###   ########.fr        #
+#    Updated: 2022/11/07 01:33:08 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= easyfind
+NAME	= MutantStack
 
 SRC_PATH		= ./
 INCLUDES_PATH	= ./
@@ -23,7 +23,7 @@ SRCS = $(addprefix $(SRC_PATH), $(SRCS_FILES))
 OBJS_FILES	= $(patsubst %.cpp, %.o, $(SRCS_FILES))
 OBJS = $(addprefix $(OBJS_PATH), $(OBJS_FILES))
 
-HEADER_FILES	=	easyfind.hpp
+HEADER_FILES	=	MutantStack.hpp
 
 
 HEADERS = $(addprefix $(INCLUDES_PATH), $(HEADER_FILES))

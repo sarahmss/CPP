@@ -6,24 +6,25 @@
 #    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/11 17:02:33 by smodesto          #+#    #+#              #
-#    Updated: 2022/11/04 16:59:11 by coder            ###   ########.fr        #
+#    Updated: 2022/11/05 04:34:13 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= easyfind
+NAME	= Span
 
 SRC_PATH		= ./
 INCLUDES_PATH	= ./
 OBJS_PATH		= ./objects/
 
-SRCS_FILES =	main.cpp
+SRCS_FILES =	main.cpp	\
+				Span.cpp
 
 SRCS = $(addprefix $(SRC_PATH), $(SRCS_FILES))
 
 OBJS_FILES	= $(patsubst %.cpp, %.o, $(SRCS_FILES))
 OBJS = $(addprefix $(OBJS_PATH), $(OBJS_FILES))
 
-HEADER_FILES	=	easyfind.hpp
+HEADER_FILES	=	Span.hpp
 
 
 HEADERS = $(addprefix $(INCLUDES_PATH), $(HEADER_FILES))
